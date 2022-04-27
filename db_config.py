@@ -1,1 +1,1 @@
-DB_CONFIG = 'mysql+pymysql://root:12345@localhost:3306/cloudgaming'
+DB_CONFIG = 'mysql+pymysql://{username}:{password}@localhost:3306/{schema}'
