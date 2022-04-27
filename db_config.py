@@ -1,0 +1,1 @@
+DB_CONFIG = 'mysql+pymysql://root:12345@localhost:3306/cloudgaming'
