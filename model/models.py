@@ -51,8 +51,8 @@ class Publisher(db.Model):
     location = db.Column(db.String(30))
     year_of_Est = db.Column(db.DateTime)
     followers = db.relationship('User', secondary=following, backref='followers')
-    games_released = db.relationship('Game', secondary=following, backref='released')
-    games_updated = db.relationship('Game', secondary=following, backref='updated')
+    games_released = db.relationship('Game', secondary=releases, backref='released')
+    games_updated = db.relationship('Game', secondary=updates, backref='updated')
 
     def __init__(self,name,rating,location,year_of_Est):
         super(Publisher,self).__init__(name=name,rating = rating,location = location,year_of_Est = year_of_Est)
@@ -63,15 +63,15 @@ class User(db.Model):
     hashed_password = db.Column(db.String(128))
     cart_balance = db.Column(db.Float)
     year_of_registration = db.Column(db.DateTime)
-    nationality = db.Column(db.String(30))
-    email = db.Column(db.String(30),unique = True)
+    nationality = db.Column(db.String(30),nullable=True)
+    email = db.Column(db.String(30),unique = True,nullable=True)
     community_Name = db.Column(db.String(30), db.ForeignKey('community.name'), nullable=True)
     server_Name = db.Column(db.String(30),nullable = True)
     server_Region = db.Column(db.String(30),nullable = True)
     __table_args__ = (db.ForeignKeyConstraint([server_Name, server_Region],['server.name', 'server.region']),{})
     trophies = db.relationship('Trophy',backref = 'user',lazy = True)
 
-    def __init__(self, user_name, password,nationality,email,community_Name = None,server_Name = None,server_Region = None):
+    def __init__(self, user_name, password,email = None,nationality = None,community_Name = None,server_Name = None,server_Region = None):
         super(User, self).__init__(user_name=user_name,community_Name = community_Name,server_Name =server_Name,server_Region=server_Region)
         self.hashed_password = bcrypt.generate_password_hash(password)
         self.cart_balance = 0.0
@@ -89,7 +89,7 @@ class Game(db.Model):
     server_Name = db.Column(db.String(30),nullable = True)
     server_Region = db.Column(db.String(30),nullable = True)
     __table_args__ = (db.ForeignKeyConstraint([server_Name, server_Region],['server.name', 'server.region']),{})
-    players = db.relationship('User', secondary=following, backref='players')
+    players = db.relationship('User', secondary=playing, backref='players')
 
     def __init__(self, name, rating,no_of_purchases):
         super(Game, self).__init__(name = name,rating = rating,no_of_purchases = no_of_purchases)
