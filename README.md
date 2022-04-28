@@ -1,12 +1,17 @@
 # CMPS277-Project
 
+```diff
+Step 1:
+Unix: 
++ . venv/bin/activate
+Windows: 
++ venv\Scripts\activate
+```
 
-## Step 1:
-### Unix: . venv/bin/activate
-### Windows: venv\Scripts\activate
-
-## Step 2: 
-### pip install -r requirements.txt
+```diff
+ Step 2: 
++ pip install -r requirements.txt
+```
 
 ```diff
 Step 3: 
