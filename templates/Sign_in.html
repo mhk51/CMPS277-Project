@@ -1,0 +1,41 @@
+
+<html>
+    <head>
+        <title>Sign In Form</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='signin.css')}}">
+    </head>
+
+    <body>
+        <form method="post">
+
+        <img src="{{ url_for('static', filename='1.png')}}" alt="any" style="float:right;width:50%;height:100%">
+        <div style="position:relative;  top:100px; left:75px">
+            <t>Developer DataBase</t>
+        </div>
+        <fieldset>
+            <div class="email">
+                <div>
+                    <label for="mail">Id:</label>
+                </div>
+                <div>
+                    <input type="email" id="mail" name="user_email" required>
+                </div>
+            </div>
+            <div class=" password">
+                <div>
+                    <label for="password">Password:</label>
+                </div>
+                <div>
+                    <input type="password" id="password" name="user_password" required>
+                </div>
+            </div>
+            <div class="button">
+                    <!-- <a href='page2.html'> -->
+                        <button id = "sign_in_button">LOG IN</button>
+                    <!-- </a> -->
+            </div>
+        </fieldset>
+        <script src="{{ url_for('static', filename='signin.js')}}"></script>
+        </form>
+    </body>
+</html>

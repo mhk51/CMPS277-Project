@@ -1,0 +1,40 @@
+body {
+    background-color: rgb(150, 69, 102);
+    background-image: url('2.jpg');
+}
+
+fieldset {
+    margin-left: 300px;
+    border: none;
+}
+
+table {
+    text-align: center;
+    border-spacing: 100;
+    border: white;
+}
+
+form {
+    width: 100%;
+}
+
+td {
+    background-color: rgb(255, 251, 251);
+    font-weight: bold;
+    font-size: 40px;
+}
+
+li {
+    display: block;
+}
+
+button {
+    color: rgb(16, 15, 15);
+    background-color: rgb(212, 40, 83);
+    font-size: 20px;
+    text-align: center;
+    width: 200px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 40px;
+}
