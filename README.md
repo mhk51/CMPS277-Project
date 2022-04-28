@@ -12,6 +12,11 @@ Windows:
 ```diff
 + pip install -r requirements.txt
 ```
+## Step 3:
+```diff
+Create a python file in the root directory called db_config.py with the following contents:
++ DB_CONFIG = 'mysql+pymysql://{username}:{password}@{ip}:{port}/{schema}'
+```
 
 ## Step 3: 
 ```diff
