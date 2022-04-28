@@ -9,11 +9,11 @@
 ### pip install -r requirements.txt
 
 ```diff
-## Step 3: 
-### Run Python enviroment and type the following:
-### from app import db
-###! db.create_all()
-###! exit()
+Step 3: 
+Run Python enviroment and type the following:
++ from app import db
++ db.create_all()
++ exit()
 ```
 
 ```diff
