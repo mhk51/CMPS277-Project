@@ -18,7 +18,7 @@ Create a python file in the root directory called db_config.py with the followin
 + DB_CONFIG = 'mysql+pymysql://{username}:{password}@{ip}:{port}/{schema}'
 ```
 
-## Step 3: 
+## Step 4: 
 ```diff
 Run Python enviroment and type the following:
 + from app import db
