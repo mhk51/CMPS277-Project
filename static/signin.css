@@ -20,7 +20,7 @@
     }
     
     input[type="password"],
-    input[type="email"],
+    input[type="text"],
     textarea,
     select {
         background: rgba(255, 255, 255, 0.1);

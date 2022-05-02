@@ -59,12 +59,17 @@ def render_sign_in():
 
 @app.route('/signin',methods = ['POST'])
 def sign_in():
-    user_email = (request.form['user_email'])
+    user_name = (request.form['user_email'])
     password = (request.form['user_password'])
-    if(password == 'whatever'):
-        return render_template('page2.html')
-    else:
+    user_instance = User.query.filter_by(user_name=user_name).first()
+    if user_instance is None:
         return render_sign_in()
+    
+    if not bcrypt.check_password_hash(user_instance.hashed_password, password):
+        return render_sign_in()
+    return render_template('page2.html')
+    # return render_sign_in()
+        
 
 
 
@@ -77,17 +82,3 @@ def user():
     db.session.commit()
     return jsonify(user_schema.dump(user_instance))
 
-
-@app.route('/authentication', methods=['POST'])
-def authentication():
-    user_name = request.json["user_name"]
-    password = request.json["password"]
-    if user_name is None or password is None or user_name is "" or password is "":
-        abort(400)
-    user_instance = User.query.filter_by(user_name=user_name).first()
-    if user_instance is None:
-        abort(403)
-    if not bcrypt.check_password_hash(user_instance.hashed_password, password):
-        abort(403)
-    tkn = create_token(user_instance.id)
-    return jsonify(token=tkn)
