@@ -1,4 +1,6 @@
-from flask import Flask, render_template, request
+import email
+import re
+from flask import Flask, redirect, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from flask_bcrypt import Bcrypt
@@ -70,15 +72,30 @@ def sign_in():
     return render_template('page2.html')
     # return render_sign_in()
         
+@app.route('/signup',methods = ['GET'])
+def render_sign_up():
+    return render_template('sign_up.html')
 
 
-
-@app.route('/user', methods=['POST'])
-def user():
-    user_name = request.json["user_name"]
-    password = request.json["password"]
-    user_instance = User(user_name, password)
+@app.route('/signup',methods = ['POST'])
+def sign_up():
+    user_name = request.form["user_name"]
+    password = request.form["password"]
+    user_email = request.form['email']
+    confirm_pass = request.form['confirm_password']
+    nationality = request.form['nationality']
+    if(password != confirm_pass):
+        abort(403)
+    user_instance = User.query.filter_by(user_name = user_name).first()
+    if(user_instance != None):
+        abort(403)
+    user_instance = User(user_name, password,email=user_email,nationality=nationality)
     db.session.add(user_instance)
     db.session.commit()
-    return jsonify(user_schema.dump(user_instance))
+    return redirect(url_for('home_page'))
+
+@app.route('/Homepage',methods =["GET"])
+def home_page():
+    return render_template('page2.html')
+
 
