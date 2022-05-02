@@ -1,5 +1,6 @@
 import email
 from msilib.schema import Error
+from operator import ge
 import re
 from turtle import pu
 from flask import Flask, redirect, render_template, request, session, url_for
@@ -219,3 +220,64 @@ def connect_server():
     server_instance.users.append(user_instance)
     db.session.commit()
     return redirect(url_for('home_page'))
+
+@app.route('/updategame',methods = ["GET"])
+def render_update_game():
+    genres = Genre.query.all()
+    servers = Server.query.all()
+    games = Game.query.all()
+    return render_template('GameUpdate.html',servers=servers,genres=genres,games=games)
+
+@app.route('/updategame',methods = ['POST'])
+def update_game():
+    game = request.form['games'].split(',')
+    game_id = game[0]
+    game_instance = Game.query.get(game_id)
+    name = request.form['name']
+    genre = request.form.get('genres')
+    rating = request.form['rating']
+    server = request.form['servers'].split(",")
+    server_name = server[0]
+    server_region = server[1]
+    game_instance.name = name
+    game_instance.genre_name = genre
+    game_instance.rating = rating
+    game_instance.server_Name = server_name
+    game_instance.server_Region = server_region
+    db.session.commit()
+    return redirect(url_for('home_page'))
+
+
+@app.route('/updatepublisher',methods = ["GET"])
+def render_update_publisher():
+    publishers = Publisher.query.all()
+    return render_template('PublisherUpdate.html',publishers = publishers)
+
+@app.route('/updatepublisher',methods = ["POST"])
+def update_publisher():
+    publisher = request.form['publishers']
+    location = request.form['location']
+    rating = request.form['rating']
+    est_year = request.form['est_year']
+
+    publisher_instance = Publisher.query.get(publisher)
+    publisher_instance.location = location
+    publisher_instance.rating = rating
+    publisher_instance.year_of_Est = est_year
+    db.session.commit()
+    return redirect(url_for('home_page'))
+
+@app.route('/mygames',methods = ['GET'])
+def render_my_games():
+    user_name = session['token']
+    user_instance = User.query.get(user_name)
+    games = Game.query.join(User,Game.players)
+    return render_template('myGames.html',games=games)
+
+
+@app.route('/mypublishers',methods = ['GET'])
+def render_my_publishers():
+    user_name = session['token']
+    user_instance = User.query.get(user_name)
+    publishers = Publisher.query.join(User,Publisher.followers)
+    return render_template('myPublishers.html',publishers=publishers)

@@ -1,0 +1,70 @@
+<head>
+
+    <title>Update Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='GameUpdate.css')}}">
+
+
+</head>
+
+<body>
+    <table>
+        <tr>
+            <form method="post" style="float:top;">
+                    <fieldset>
+
+                        <div class="input-field">
+                            <label>Games</label> &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp
+                            <select name= games>
+                                {% for game in games %}
+                                <option value= "{{game}}" SELECTED>{{game.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Name</label> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp
+                            <input id = "name" name="name" type="text" placeholder="Insert" required>
+                        </div>
+            
+                        <div class="input-field">
+                            <label>Rating</label> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp
+                            <select name= rating>
+                                {% for rating in [1,2,3,4,5,6,7,8,9,10] %}
+                                <option value= "{{rating}}" SELECTED>{{rating}}</option>
+                                {% endfor %}
+                            </select>
+            
+                        </div>
+            
+            
+                        <div class="input-field">
+                            <label>Genre Name</label> &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp
+                            <select name= genres>
+                                {% for genre in genres %}
+                                <option value= "{{genre}}" SELECTED>{{genre.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+            
+                        <div class="input-field">
+                            <label>Server Name</label> &nbsp&nbsp&nbsp&nbsp &nbsp
+                            <select name= servers>
+                                {% for server in servers %}
+                                <option value= "{{server}}" SELECTED>{{server.name + " " + server.region}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div>
+                            <a><button>Update Tuple</button></a>
+                        </div>
+
+                        </div>
+
+                    </fieldset>
+
+
+                </td>
+            </form>
+        </tr>
+</body>

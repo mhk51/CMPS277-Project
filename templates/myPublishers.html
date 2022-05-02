@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Developer Phase</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='InsertGame.css')}}">
+    </head>
+    <body>
+        <head>
+            <title>HTML Tables</title>
+        </head>
+            <fieldset>
+                <body>
+                    <fieldset>
+                    <ul>
+                        {% for publisher in publishers %}
+                    <li">{{publisher.name}}</li>
+                    {% endfor %}
+                    </ul>
+                </fieldset>
+                </body>
+            </fieldset>
+    </body>
+</html>
