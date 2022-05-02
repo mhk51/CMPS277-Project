@@ -7,64 +7,71 @@
         <head>
             <title>HTML Tables</title>
         </head>
-        <form>
             <fieldset>
                 <body>
                     <table border="3">
                         <tr>
                             <td>Games
                                 <li>
-                                    <button> Retrieve </button>
+                                    <button type="submit"> Retrieve </button>
                                 </li>
                                 <li>
-                                    <button> Update </button>
+                                    <button type="submit"> Update </button>
                                 </li>
                                 <li>
-                                    <button> Insert </button>
+                                    <form action="{{url_for('render_insert_game') }}" method="get">
+                                    <button type="submit"> Insert </button>
+                                    </form>
                                 </li>
                             </td>
                             <td>Players
                                 <li>
-                                    <button> Retrieve </button>
+                                    <button type="submit"> Retrieve </button>
                                 </li>
                                 <li>
-                                    <button> Update </button>
+                                    <button type="submit"> Update </button>
                                 </li>
                                 <li>
-                                    <button> Insert </button>
+                                    <form action="{{url_for('render_insert_player') }}" method="get">
+                                    <button type="submit"> Insert </button>
+                                    </form>
                                 </li>
                             </td>
                         </tr>
                         <tr>
                             <td>Publishers
                                 <li>
-                                    <button> Retrieve </button>
+                                    <button type="submit"> Retrieve </button>
                                 </li>
                                 <li>
-                                    <button> Update </button>
+                                    <button type="submit"> Update </button>
                                 </li>
                                 <li>
 
-                                    <button> Insert </button>
+                                    <form action="{{url_for('render_insert_publisher') }}" method="get">
+                                    <button type="submit"> Insert </button>
+                                    </form>
                                 </li>
                             </td>
                             <td>Servers
 
                                 <li>
-                                    <button> Retrieve </button>
+                                    <button type="submit"> Retrieve </button>
                                 </li>
                                 <li>
-                                    <button> Update </button>
+                                    <button type="submit"> Update </button>
                                 </li>
                                 <li>
-
-                                    <button> Insert </button>
+                                    <form action="{{ url_for('render_insert_server') }}" method="get">
+                                    <button type="submit"> Insert </button>
+                                </form>
+                                </a>
+                                </form>
                                 </li>
                             </td>
                         </tr>
                     </table>
                 </body>
             </fieldset>
-        </form>
     </body>
 </html>

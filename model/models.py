@@ -91,8 +91,8 @@ class Game(db.Model):
     __table_args__ = (db.ForeignKeyConstraint([server_Name, server_Region],['server.name', 'server.region']),{})
     players = db.relationship('User', secondary=playing, backref='players')
 
-    def __init__(self, name, rating,no_of_purchases):
-        super(Game, self).__init__(name = name,rating = rating,no_of_purchases = no_of_purchases)
+    def __init__(self, name,genre,rating):
+        super(Game, self).__init__(name = name,rating = rating,genre_name = genre,no_of_purchases = 0)
 
 
 class Trophy(db.Model):
