@@ -1,0 +1,33 @@
+<head>
+
+    <title>Insert</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='InsertGame.css')}}">
+
+
+</head>
+
+<body>
+    <form method="post">
+
+        <h1>Which attribute in the Genre do you want to Insert?</h1>
+
+        <fieldset>
+
+
+            <div class="input-field">
+                <label>Servers</label> &nbsp&nbsp&nbsp&nbsp &nbsp
+                <select name= servers>
+                    {% for server in servers %}
+                    <option value= "{{server}}" SELECTED>{{server.name + " " + server.region}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div>
+                <a><button>Connect to Server</button></a>
+            </div>
+
+
+        </fieldset>
+    </form>
+</body>

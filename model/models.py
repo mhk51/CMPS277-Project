@@ -27,6 +27,9 @@ class Community(db.Model):
 
     def __init__(self,name):
         super(Community,self).__init__(name = name)
+    
+    def __str__(self):
+        return self.name
 
 class Genre(db.Model):
     name = db.Column(db.String(30),primary_key = True)
@@ -34,6 +37,8 @@ class Genre(db.Model):
 
     def __init__(self,name):
         super(Genre,self).__init__(name = name)
+    def __str__(self):
+        return self.name
 
 class Server(db.Model):
     name = db.Column(db.String(30),primary_key = True)
@@ -44,6 +49,8 @@ class Server(db.Model):
 
     def __init__(self,name,region,capacity):
         super(Server,self).__init__(name = name,region = region,capacity = capacity)
+    def __str__(self):
+        return self.name+","+self.region+","+str(self.capacity)
 
 class Publisher(db.Model):
     name = db.Column(db.String(30),primary_key = True)
@@ -56,7 +63,9 @@ class Publisher(db.Model):
 
     def __init__(self,name,rating,location,year_of_Est):
         super(Publisher,self).__init__(name=name,rating = rating,location = location,year_of_Est = year_of_Est)
-
+    
+    def __str__(self):
+        return self.name
 
 class User(db.Model):
     user_name = db.Column(db.String(30), primary_key=True,unique = True)
@@ -91,9 +100,11 @@ class Game(db.Model):
     __table_args__ = (db.ForeignKeyConstraint([server_Name, server_Region],['server.name', 'server.region']),{})
     players = db.relationship('User', secondary=playing, backref='players')
 
-    def __init__(self, name,genre,rating):
-        super(Game, self).__init__(name = name,rating = rating,genre_name = genre,no_of_purchases = 0)
+    def __init__(self, name,genre,rating,server_name,server_region):
+        super(Game, self).__init__(name = name,rating = rating,genre_name = genre,server_Name = server_name,server_Region=server_region,no_of_purchases = 0)
 
+    def __str__(self):
+        return str(self.id)+","+self.name
 
 class Trophy(db.Model):
     name = db.Column(db.String(30),primary_key = True)

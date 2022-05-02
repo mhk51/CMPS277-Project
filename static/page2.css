@@ -14,10 +14,6 @@ table {
     border: white;
 }
 
-form {
-    width: 100%;
-}
-
 td {
     background-color: rgb(255, 251, 251);
     font-weight: bold;

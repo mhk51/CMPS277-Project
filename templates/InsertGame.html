@@ -46,8 +46,8 @@
                     <option value= "{{genre}}" SELECTED>{{genre.name}}</option>
                     {% endfor %}
                 </select>
-                <a href="{{ url_for('home_page') }}">
-                    <button type="button">Add</button>
+                <a href="{{ url_for('render_insert_genre') }}">
+                    <button type="button" style="position: relative;right: 120px;width: 120px;">Add</button>
                 </a>
             </div>
 
@@ -55,11 +55,11 @@
                 <label>Server Name</label> &nbsp&nbsp&nbsp&nbsp &nbsp
                 <select name= servers>
                     {% for server in servers %}
-                    <option value= "{{server}}" SELECTED>{{server.name+" "+server.region}}</option>
+                    <option value= "{{server}}" SELECTED>{{server.name + " " + server.region}}</option>
                     {% endfor %}
                 </select>
                 <a href="{{ url_for('render_insert_server') }}">
-                    <button type="button">Add</button>
+                    <button type="button" style="position: relative;right: 120px;width: 120px;">Add</button>
                 </a>
             </div>
 

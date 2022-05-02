@@ -23,8 +23,13 @@
                                     <button type="submit"> Insert </button>
                                     </form>
                                 </li>
+                                <li>
+                                    <form action="{{url_for('render_play_game') }}" method="get">
+                                    <button type="submit"> Play </button>
+                                    </form>
+                                </li>
                             </td>
-                            <td>Players
+                            <td>Communities
                                 <li>
                                     <button type="submit"> Retrieve </button>
                                 </li>
@@ -32,8 +37,13 @@
                                     <button type="submit"> Update </button>
                                 </li>
                                 <li>
-                                    <form action="{{url_for('render_insert_player') }}" method="get">
+                                    <form action="{{url_for('render_insert_community') }}" method="get">
                                     <button type="submit"> Insert </button>
+                                    </form>
+                                </li>
+                                <li>
+                                    <form action="{{url_for('render_follow_community') }}" method="get">
+                                    <button type="submit"> Follow </button>
                                     </form>
                                 </li>
                             </td>
@@ -52,6 +62,11 @@
                                     <button type="submit"> Insert </button>
                                     </form>
                                 </li>
+                                <li>
+                                    <form action="{{url_for('render_follow_publisher') }}" method="get">
+                                    <button type="submit"> Follow </button>
+                                    </form>
+                                </li>
                             </td>
                             <td>Servers
 
@@ -65,8 +80,11 @@
                                     <form action="{{ url_for('render_insert_server') }}" method="get">
                                     <button type="submit"> Insert </button>
                                 </form>
-                                </a>
-                                </form>
+                                </li>
+                                <li>
+                                    <form action="{{url_for('render_connect_server') }}" method="get">
+                                    <button type="submit"> Connect </button>
+                                    </form>
                                 </li>
                             </td>
                         </tr>

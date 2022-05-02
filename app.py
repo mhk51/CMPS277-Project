@@ -1,13 +1,15 @@
 import email
 from msilib.schema import Error
 import re
-from flask import Flask, redirect, render_template, request, url_for
+from turtle import pu
+from flask import Flask, redirect, render_template, request, session, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS
 from flask import abort
 from flask import jsonify
+
 from db_config import DB_CONFIG
 import datetime
 import jwt 
@@ -21,6 +23,8 @@ CORS(app)
 ma = Marshmallow(app)
 bcrypt = Bcrypt(app)
 db = SQLAlchemy(app)
+
+app.secret_key = "super secret key"
 
 SECRET_KEY = "b'|\xe7\xbfU3`\xc4\xec\xa7\xa9zf:}\xb5\xc7\xb9\x139^3@Dv'"
 
@@ -44,13 +48,13 @@ def sign_in():
     user_name = (request.form['user_email'])
     password = (request.form['user_password'])
     user_instance = User.query.filter_by(user_name=user_name).first()
+    session['token'] = user_name
     if user_instance is None:
         return render_sign_in()
     
     if not bcrypt.check_password_hash(user_instance.hashed_password, password):
         return render_sign_in()
     return render_template('page2.html')
-    # return render_sign_in()
         
 @app.route('/signup',methods = ['GET'])
 def render_sign_up():
@@ -85,34 +89,41 @@ def render_insert_game():
 @app.route('/insertgame',methods = ['POST'])
 def insert_game():
     name = request.form['name']
-    genre = request.form['genre']
+    genre = request.form.get('genres')
     rating = request.form['rating']
-    game_instance = Game(name,genre,rating)
-    genre_instance = Genre.query.filter_by(name = genre).first()
-    if(genre_instance == None):
-        genre_instance = Genre(genre)
-        db.session.add(genre_instance)
-        db.session.commit()
+    server = request.form['servers'].split(",")
+    server_name = server[0]
+    server_region = server[1]
+    game_instance = Game(name,genre,rating,server_name =server_name,server_region= server_region)
     db.session.add(game_instance)
     db.session.commit()
     return redirect(url_for('home_page'))
 
-@app.route('/insertplayer',methods = ['GET'])
-def render_insert_player():
-    return render_template('InsertPlayer.html')
+@app.route('/insertcommunity',methods = ['GET'])
+def render_insert_community():
+    return render_template('InsertCommunity.html')
 
-@app.route('/insertplayer',methods =['POST'])
-def insert_player():
+@app.route('/insertcommunity',methods =['POST'])
+def insert_community():
     name = request.form['name']
-    genre = request.form['genre']
-    rating = request.form['rating']
-    game_instance = Game(name,genre,rating)
-    genre_instance = Genre.query.filter_by(name = genre).first()
-    if(genre_instance == None):
-        genre_instance = Genre(genre)
-        db.session.add(genre_instance)
-        db.session.commit()
-    db.session.add(game_instance)
+    community_instance = Community(name)
+    db.session.add(community_instance)
+    db.session.commit()
+    return redirect(url_for('home_page'))
+
+@app.route('/followcommunity',methods = ['GET'])
+def render_follow_community():
+    communities = Community.query.all()
+    return render_template('followCommunity.html',communities=communities)
+
+@app.route('/followcommunity',methods = ["POST"])
+def follow_community():
+    user_name = session['token']
+    user_instance = User.query.get(user_name)
+    community = request.form["communities"]
+    community_instance = Community.query.get(community)
+    print(community_instance)
+    community_instance.users.append(user_instance)
     db.session.commit()
     return redirect(url_for('home_page'))
 
@@ -157,3 +168,54 @@ def insert_genre():
     db.session.add(genre_instance)
     db.session.commit()
     return redirect(url_for('render_insert_game'))
+
+
+
+@app.route('/playgame',methods = ['GET'])
+def render_play_game():
+    games = Game.query.all()
+    return render_template('playGame.html',games = games)
+
+@app.route('/playgame',methods = ['POST'])
+def play_game():
+    user_name = session['token']
+    user_instance = User.query.filter_by(user_name=user_name).first()
+    game = request.form['games'].split(",")
+    game_id = game[0]
+    game_instance = Game.query.get(game_id)
+    game_instance.players.append(user_instance)
+    db.session.commit()
+    return redirect(url_for('home_page'))
+
+
+@app.route('/followpublisher',methods = ['GET'])
+def render_follow_publisher():
+    publishers = Publisher.query.all()
+    return render_template('followPublisher.html',publishers=publishers)
+
+@app.route('/followpublisher',methods = ['POST'])
+def follow_publisher():
+    user_name = session['token']
+    user_instance = User.query.get(user_name)
+    publisher_name = request.form['publishers']
+    publisher_instance = Publisher.query.get(publisher_name)
+    publisher_instance.followers.append(user_instance)
+    db.session.commit()
+    return redirect(url_for('home_page'))
+
+@app.route('/connectserver',methods = ['GET'])
+def render_connect_server():
+    servers = Server.query.all()
+    return render_template('connectServer.html',servers = servers)
+
+@app.route('/connectserver',methods = ['POST'])
+def connect_server():
+    user_name = session['token']
+    user_instance = User.query.get(user_name)
+    server = request.form['servers'].split(',')
+    server_name = server[0]
+    server_region = server[1]
+    server_instance = Server.query.get((server_name,server_region))
+    server_instance.users.append(user_instance)
+    db.session.commit()
+    return redirect(url_for('home_page'))

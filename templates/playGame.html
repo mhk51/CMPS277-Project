@@ -1,0 +1,33 @@
+<head>
+
+    <title>Insert</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='InsertGame.css')}}">
+
+
+</head>
+
+<body>
+    <form method="post">
+
+        <h1>Which attribute in the Genre do you want to Insert?</h1>
+
+        <fieldset>
+
+
+            <div class="input-field">
+                <label>Games</label> &nbsp&nbsp&nbsp&nbsp &nbsp
+                <select name= games>
+                    {% for game in games %}
+                    <option value= "{{game}}" SELECTED>{{game.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div>
+                <a><button>Play Game</button></a>
+            </div>
+
+
+        </fieldset>
+    </form>
+</body>
