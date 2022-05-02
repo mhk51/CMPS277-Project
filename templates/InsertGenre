@@ -1,0 +1,33 @@
+<head>
+
+    <title>Insert</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='InsertGame.css')}}">
+
+
+</head>
+
+<body>
+    <form method="post">
+
+        <h1>Which attribute in the Genre do you want to Insert?</h1>
+
+        <fieldset>
+
+            <!-- <div class="input-field">
+                <label>ID</label> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp
+                <input type="text" placeholder="Insert" required>
+            </div> -->
+
+            <div class="input-field">
+                <label>Name</label> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp
+                <input id = "name" name="name" type="text" placeholder="Insert" required>
+            </div>
+
+            <div>
+                <a><button>Insert Genre</button></a>
+            </div>
+
+
+        </fieldset>
+    </form>
+</body>

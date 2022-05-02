@@ -30,6 +30,7 @@
                     <option value= "{{rating}}" SELECTED>{{rating}}</option>
                     {% endfor %}
                 </select>
+
             </div>
             <!-- <div class="input-field">
                 <label>Purchases No</label> &nbsp&nbsp&nbsp&nbsp
@@ -45,6 +46,9 @@
                     <option value= "{{genre}}" SELECTED>{{genre.name}}</option>
                     {% endfor %}
                 </select>
+                <a href="{{ url_for('home_page') }}">
+                    <button type="button">Add</button>
+                </a>
             </div>
 
             <div class="input-field">
@@ -54,6 +58,9 @@
                     <option value= "{{server}}" SELECTED>{{server.name+" "+server.region}}</option>
                     {% endfor %}
                 </select>
+                <a href="{{ url_for('render_insert_server') }}">
+                    <button type="button">Add</button>
+                </a>
             </div>
 
             <div>

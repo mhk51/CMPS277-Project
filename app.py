@@ -145,3 +145,15 @@ def insert_server():
     db.session.add(server_instance)
     db.session.commit()
     return redirect(url_for('home_page'))
+
+@app.route('/insertgenre',methods = ["GET"])
+def render_insert_genre():
+    return render_template('InsertGenre')
+
+@app.route('/insertgenre',methods = ['POST'])
+def insert_genre():
+    name = request.form['name']
+    genre_instance = Genre(name)
+    db.session.add(genre_instance)
+    db.session.commit()
+    return redirect(url_for('render_insert_game'))
