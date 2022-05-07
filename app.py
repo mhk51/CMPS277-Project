@@ -77,6 +77,7 @@ def sign_up():
     user_instance = User(user_name, password,email=user_email,nationality=nationality)
     db.session.add(user_instance)
     db.session.commit()
+    session['token'] = user_name
     return redirect(url_for('home_page'))
 
 
