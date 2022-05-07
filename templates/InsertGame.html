@@ -20,12 +20,12 @@
 
             <div class="input-field">
                 <label>Name</label> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp
-                <input id = "name" name="name" type="text" placeholder="Insert" required>
+                <input id="name" name="name" type="text" placeholder="Insert" required>
             </div>
 
             <div class="input-field">
                 <label>Rating</label> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp
-                <select name= rating>
+                <select name=r ating>
                     {% for rating in [1,2,3,4,5,6,7,8,9,10] %}
                     <option value= "{{rating}}" SELECTED>{{rating}}</option>
                     {% endfor %}
@@ -36,30 +36,32 @@
 
             <div class="input-field">
                 <label>Genre Name</label> &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp
-                <select name= genres>
+                <select name=g enres>
                     {% for genre in genres %}
                     <option value= "{{genre}}" SELECTED>{{genre.name}}</option>
                     {% endfor %}
                 </select>
+            </div>
+            <div>
                 <a href="{{ url_for('render_insert_genre') }}">
-                    <button type="button" style="position: relative;right: 120px;width: 120px;">Add</button>
+                    <button type="button" style="position: relative;left: 480px;width: 120px;">Add</button>
                 </a>
             </div>
 
             <div class="input-field">
                 <label>Server Name</label> &nbsp&nbsp&nbsp&nbsp &nbsp
-                <select name= servers>
+                <select name=s ervers>
                     {% for server in servers %}
                     <option value= "{{server}}" SELECTED>{{server.name + " " + server.region}}</option>
                     {% endfor %}
                 </select>
                 <a href="{{ url_for('render_insert_server') }}">
-                    <button type="button" style="position: relative;right: 120px;width: 120px;">Add</button>
+                    <button type="button" style="position: relative;left: 480px;width: 120px;">Add</button>
                 </a>
             </div>
 
             <div>
-                <a><button>Insert Game</button></a>
+                <a><button type="button" style="position: relative;left: 100px;width: 220px;">Insert Game</button></a>
             </div>
 
 

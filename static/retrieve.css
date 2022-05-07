@@ -1,0 +1,61 @@
+body {
+    background-image: url('2.jpg');
+}
+
+fieldset {
+    margin-bottom: 100px;
+    margin-top: 200px;
+    border: none;
+    width: auto;
+    height: auto;
+    text-align: center;
+    color: white;
+    font-size: 20;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 30;
+}
+
+input[type="password"],
+input[type="text"],
+textarea,
+select {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    font-size: 16px;
+    height: auto;
+    margin: 0;
+    outline: 0;
+    padding: 15px;
+    width: 70%;
+    background-color: white;
+    color: rgb(1, 66, 106);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+    margin-bottom: 30px;
+}
+
+a {
+    color: white;
+}
+
+t {
+    color: white;
+    font-size: 65;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+button {
+    color: rgb(1, 66, 106);
+    background-color: #FFF;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 5px;
+    height: 6%;
+    width: 20%;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
