@@ -1,21 +1,28 @@
 <html>
+
+<head>
+    <title>Developer Phase</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='InsertGame.css')}}">
+</head>
+
+<body>
+
     <head>
-        <title>Developer Phase</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='InsertGame.css')}}">
+        <title>HTML Tables</title>
     </head>
-    <body>
-        <head>
-            <title>HTML Tables</title>
-        </head>
+    <fieldset>
+
+        <body>
             <fieldset>
-                <body>
-                    <fieldset>
-                    <ul>
-                        {% for game in games %}
-                    <li">{{game.name}}</li>
+                <ul>
+                    {% for game in games %}
+                    <li ">{{game.name}}</li>
                     {% endfor %}
                     </ul>
                 </fieldset>
+                <button>
+                    Back
+                </button>
                 </body>
             </fieldset>
     </body>
