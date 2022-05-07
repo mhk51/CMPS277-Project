@@ -271,23 +271,20 @@ def update_publisher():
 @app.route('/mygames',methods = ['GET'])
 def render_my_games():
     user_name = session['token']
-    user_instance = User.query.get(user_name)
-    games = Game.query.join(User,Game.players)
+    games = Game.query.join(User,Game.players).filter_by(user_name=user_name)
     return render_template('myGames.html',games=games)
 
 
 @app.route('/mypublishers',methods = ['GET'])
 def render_my_publishers():
     user_name = session['token']
-    user_instance = User.query.get(user_name)
-    publishers = Publisher.query.join(User,Publisher.followers)
+    publishers = Publisher.query.join(User,Publisher.followers).filter_by(user_name)
     return render_template('myPublishers.html',publishers=publishers)
 
 @app.route('/mycommunities',methods = ['GET'])
 def render_my_communities():
     user_name = session['token']
-    user_instance = User.query.get(user_name)
-    communities = Community.query.join(User,Community.users)
+    communities = Community.query.join(User,Community.users).filter_by(user_name=user_name)
 
     return render_template('myCommunities.html',communities=communities)
 
