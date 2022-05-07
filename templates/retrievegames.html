@@ -23,9 +23,11 @@
       
 
       {% for game in games %}
-      <tr style="height: 100px;" > <td>{{game.name}}    
-           </td>
+      <form method="post">
+      <tr style="height: 100px;"  > <td >{{game.name}}   
+           <button type="submit" style="height: 50px;" value="{{game.name}}" name="game" > delete </button></td>
         </tr>
+      </form>
       {% endfor %}
 
       

@@ -288,7 +288,7 @@ def render_my_communities():
     user_name = session['token']
     user_instance = User.query.get(user_name)
     communities = Community.query.join(User,Community.users)
-    
+
     return render_template('myCommunities.html',communities=communities)
 
 
@@ -299,16 +299,42 @@ def render_retrieve_games():
     games = Game.query.all()
     return render_template('retrievegames.html',games=games)
 
+@app.route('/retreivegames',methods = ['POST'])
+def delete_game():
+    game_name = request.form['game']
+    game_instance = Game.query.filter_by(name= game_name).first()
+    db.session.delete(game_instance)
+    db.session.commit()
+    return redirect(url_for('home_page'))
+
 
 @app.route('/retreivecommunities',methods = ["GET"])
 def render_retrieve_communities():
     communities = Community.query.all()
     return render_template('retrievecommunities.html',communities=communities)
 
+
+@app.route('/retreivecommunities',methods = ['POST'])
+def delete_community():
+    name = request.form['community']
+    community_instance = Community.query.get(name)
+    db.session.delete(community_instance)
+    db.session.commit()
+    return redirect(url_for('home_page'))
+
+
 @app.route('/retreivepublishers',methods = ["GET"])
 def render_retrieve_publishers():
     publishers = Publisher.query.all()
     return render_template('retrievepublishers.html',publishers=publishers)
+
+@app.route('/retreivepublishers',methods = ['POST'])
+def delete_publisher():
+    name = request.form['publisher']
+    publisher_instance = Publisher.query.get(name)
+    db.session.delete(publisher_instance)
+    db.session.commit()
+    return redirect(url_for('home_page'))
 
 @app.route('/retreiveservers',methods = ["GET"])
 def render_retrieve_servers():

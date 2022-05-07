@@ -21,9 +21,11 @@
       
 
       {% for publisher in publishers %}
-      <tr style="height: 100px;" > <td>{{publisher.name}}    
-          </td>
-        </tr>
+      <form method="post">
+        <tr style="height: 100px;" > <td>{{publisher.name}}    
+          <button type="submit" style="height: 50px;" value="{{publisher.name}}" name="publisher" > delete </button></td>
+          </tr>
+        </form>
       {% endfor %}
 
       

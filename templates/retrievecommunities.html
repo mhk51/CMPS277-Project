@@ -22,9 +22,11 @@
       
 
       {% for community in communities %}
+      <form method="post">
       <tr style="height: 100px;" > <td>{{community.name}}    
-           <button type="button" style="height: 50px;" > delete </button></td>
+        <button type="submit" style="height: 50px;" value="{{community.name}}" name="community" > delete </button></td>
         </tr>
+      </form>
       {% endfor %}
 
       
