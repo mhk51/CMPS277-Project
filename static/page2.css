@@ -11,6 +11,8 @@ fieldset {
 }
 
  table {
+     align-self: center;
+     align-content: center;
     text-align: center;
     border-spacing: 50;
     margin-left:400px;

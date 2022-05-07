@@ -17,6 +17,7 @@ h1 {
 }
 
 fieldset {
+
     margin-bottom: 20px;
     border: none;
     margin-top: 20;
@@ -36,7 +37,7 @@ button {
     font-size: 20px;
     text-align: center;
     font-style: normal;
-    height: 20%;
+    height: 10%;
     width: 35%;
     margin-bottom: 30px;
     margin-top: 30px;
@@ -44,6 +45,7 @@ button {
 }
 
 li {
+    
     margin-right: 150px;
     width: 100;
     display: inline-block;
@@ -52,6 +54,7 @@ li {
 input[type="text"],
 textarea,
 select {
+    
     background: rgba(117, 115, 115, 0.675);
     border: none;
     font-size: 16px;

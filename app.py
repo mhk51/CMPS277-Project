@@ -278,7 +278,7 @@ def render_my_games():
 @app.route('/mypublishers',methods = ['GET'])
 def render_my_publishers():
     user_name = session['token']
-    publishers = Publisher.query.join(User,Publisher.followers).filter_by(user_name)
+    publishers = Publisher.query.join(User,Publisher.followers).filter_by(user_name=user_name)
     return render_template('myPublishers.html',publishers=publishers)
 
 @app.route('/mycommunities',methods = ['GET'])
