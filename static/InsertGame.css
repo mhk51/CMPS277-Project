@@ -50,8 +50,9 @@ button {
 
 li {
     margin-right: 150px;
-    width: 100;
-    display: inline-block;
+    width: 300;
+    display:block;
+    margin-top: 50px;
 }
 
 input[type="text"],
