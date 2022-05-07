@@ -1,30 +1,41 @@
 <head>
 
     <title>Update Publisher</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='InsertGame.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='retrieve.css')}}">
 
 
 </head>
 
-<body>
-    <table>
-        <tr>
-            
-                <fieldset>
-                    <form method="post" style="float:top;">
+<style>
+   
+    table, th, td {
+      border:5px solid rgb(255, 251, 251);
+    }
 
+    </style>
+    <body>
+    
+    
+    <table style="width:100%">
+      <tr  style="height:100px" >
+        <th> Data</th>
+      </tr>
+      
 
-
-
-
-                    </form>
-                    <form action="{{url_for('home_page') }}" method="get" >
-                        <button type="submit"> Back </button>
-                    </form>
-                </fieldset>
-
-
-                </td>
+      {% for game in games %}
+      <tr style="height: 100px;" > <td>{{game.name}}    
+           <button type="button" > delete </button></td>
         </tr>
+      {% endfor %}
+
+      
+    </table>
+
+
+    
+  
+    <form action="{{url_for('home_page') }}" method="get" >
+        <button type="submit" style="position: relative;left: 780px;width: 120px; margin-top:20px;"> Back </button>
+    </form>
 
 </body>

@@ -4,20 +4,22 @@ body {
 }
 
 fieldset {
-    margin-left: 300px;
+    margin-left: 100px;
     border: none;
 }
 
-table {
+ table {
     text-align: center;
-    border-spacing: 100;
-    border: white;
+    border-spacing: 50;
+    
 }
 
 td {
     background-color: rgb(255, 251, 251);
     font-weight: bold;
     font-size: 40px;
+width:30%;
+
 }
 
 li {
@@ -35,3 +37,6 @@ button {
     height: 40px;
 }
 
+form{
+    margin-top: 10px;
+}

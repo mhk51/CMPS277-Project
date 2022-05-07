@@ -13,18 +13,22 @@
                         <tr>
                            <thead align="center"><th align="center">
                                
-                                <li>
+ 
                                     <form action="{{url_for('render_my_games') }}" method="get" >
-                                    <button type="submit"> My Games </button>
+                                    <button type="submit" style="position: relative;left: 100px;width: 200px;"> My Games </button>
                                     </form>
-                                </li>
                                 
-                                <li>
+                                  
                                     <form action="{{url_for('render_my_publishers') }}" method="get" >
-                                    <button type="submit"> Followed Publishers </button>
-                                </form>
-                                </li>
-                            
+                                    <button type="submit" style="position: relative;left: 450px;width: 200px;"> Followed Publishers </button>
+                                    </form>
+                              
+                                    <form action="{{url_for('render_my_publishers') }}" method="get" >
+                                    <button type="submit" style="position: relative;left: 700px;width: 200px;"> My Communities </button>
+                                    </form>
+                               
+    
+
                             </th>
                             </thead>
                             

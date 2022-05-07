@@ -1,7 +1,7 @@
 <head>
 
     <title>Insert</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='InsertGame.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='InsertServer2.css')}}">
 
 
 </head>
@@ -61,10 +61,14 @@
             </div>
 
             <div>
-                <a><button type="button" style="position: relative;left: 100px;width: 220px;">Insert Game</button></a>
+                <a><button type="button" style="position: relative;left: 100px;width: 220px; ">Insert Game</button></a>
             </div>
+        </form>
+            <form action="{{url_for('home_page') }}" method="get" >
+                <button type="submit" style="position: relative;left: 740px;width: 120px; margin-top:20px;"> Back </button>
+            </form>
 
 
         </fieldset>
-    </form>
+    
 </body>
