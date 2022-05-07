@@ -282,3 +282,9 @@ def render_my_publishers():
     user_instance = User.query.get(user_name)
     publishers = Publisher.query.join(User,Publisher.followers)
     return render_template('myPublishers.html',publishers=publishers)
+
+
+@app.route('/retreivegames',methods = ["GET"])
+def render_retrieve_games():
+    games = Game.query.all()
+    return render_template('retrievegames.html',games=games)
