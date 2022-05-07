@@ -25,7 +25,7 @@
 
             <div class="input-field">
                 <label>Rating</label> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp
-                <select name=r ating>
+                <select name= 'rating'>
                     {% for rating in [1,2,3,4,5,6,7,8,9,10] %}
                     <option value= "{{rating}}" SELECTED>{{rating}}</option>
                     {% endfor %}
@@ -36,7 +36,7 @@
 
             <div class="input-field">
                 <label>Genre Name</label> &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp
-                <select name=g enres>
+                <select name='genres'>
                     {% for genre in genres %}
                     <option value= "{{genre}}" SELECTED>{{genre.name}}</option>
                     {% endfor %}
@@ -50,7 +50,7 @@
 
             <div class="input-field">
                 <label>Server Name</label> &nbsp&nbsp&nbsp&nbsp &nbsp
-                <select name=s ervers>
+                <select name= 'servers'>
                     {% for server in servers %}
                     <option value= "{{server}}" SELECTED>{{server.name + " " + server.region}}</option>
                     {% endfor %}
@@ -61,7 +61,7 @@
             </div>
 
             <div>
-                <a><button type="button" style="position: relative;left: 80px;width: 220px; ">Insert Game</button></a>
+                <a><button type="submit" style="position: relative;left: 80px;width: 220px; ">Insert Game</button></a>
             </div>
         </form>
             <form action="{{url_for('home_page') }}" method="get" >

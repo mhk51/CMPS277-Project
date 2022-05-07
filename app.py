@@ -161,7 +161,7 @@ def insert_server():
 
 @app.route('/insertgenre',methods = ["GET"])
 def render_insert_genre():
-    return render_template('InsertGenre')
+    return render_template('InsertGenre.html')
 
 @app.route('/insertgenre',methods = ['POST'])
 def insert_genre():

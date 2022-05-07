@@ -1,16 +1,21 @@
 body {
     background-color: rgb(150, 69, 102);
     background-image: url('2.jpg');
+  
 }
 
 fieldset {
     margin-left: 100px;
     border: none;
+    
 }
 
  table {
     text-align: center;
     border-spacing: 50;
+    margin-left:400px;
+   
+    
 }
 
 td {
@@ -37,6 +42,8 @@ button {
 }
 
 ul{
+    margin-left:200px;
+   
     display: inline-block;
-    
+
 }
