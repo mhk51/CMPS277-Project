@@ -11,26 +11,26 @@
                 <body>
                     <table border="3">
                         <tr>
-                           <thead align="center"><th align="center">
-                               
- 
+
+                                <ul>
                                     <form action="{{url_for('render_my_games') }}" method="get" >
-                                    <button type="submit" style="position: relative;left: 100px;width: 200px;"> My Games </button>
+                                    <button type="submit" style="position:relative; left: 60px;width: 200px;"> My Games </button>
                                     </form>
+
+                                    </ul>
+                                    <ul>
                                 
                                   
                                     <form action="{{url_for('render_my_publishers') }}" method="get" >
-                                    <button type="submit" style="position: relative;left: 450px;width: 200px;"> Followed Publishers </button>
+                                    <button type="submit" style="position:relative; left: 80px;width: 200px;"> Followed Publishers </button>
                                     </form>
-                              
-                                    <form action="{{url_for('render_my_publishers') }}" method="get" >
-                                    <button type="submit" style="position: relative;left: 700px;width: 200px;"> My Communities </button>
+                                    </ul>
+                              <ul>
+                                    <form action="{{url_for('render_my_communities') }}" method="get" >
+                                    <button type="submit" style="position:relative; left: 110px;width: 200px;"> My Communities </button>
                                     </form>
-                               
-    
-
-                            </th>
-                            </thead>
+                           
+                                </ul>
                             
                             <td>Games
                                 <li>
@@ -59,7 +59,9 @@
                             </td>
                             <td>Communities
                                 <li>
+                                    <form action="{{url_for('render_retrieve_communities') }}" method="get">
                                     <button type="submit"> Retrieve All</button>
+                                    </form>
                                 </li>
                                 <li>
                                     <form action="{{url_for('render_insert_community') }}" method="get">
@@ -76,7 +78,10 @@
                         <tr>
                             <td>Publishers
                                 <li>
-                                    <button type="submit"> Retrieve All</button>
+                                    
+                                    <form action="{{url_for('render_retrieve_publishers') }}" method="get">
+                                        <button type="submit"> Retrieve All </button>
+                                        </form>
                                 </li>
                                 <li>
                                     <form action="{{url_for('render_update_publisher') }}" method="get">
@@ -98,7 +103,9 @@
                             <td>Servers
 
                                 <li>
-                                    <button type="submit"> Retrieve All</button>
+                                    <form action="{{url_for('render_retrieve_servers') }}" method="get">
+                                        <button type="submit"> Retrieve All </button>
+                                        </form>
                                 </li>
                                 <li>
                                     <form action="{{ url_for('render_insert_server') }}" method="get">

@@ -283,8 +283,36 @@ def render_my_publishers():
     publishers = Publisher.query.join(User,Publisher.followers)
     return render_template('myPublishers.html',publishers=publishers)
 
+@app.route('/mycommunities',methods = ['GET'])
+def render_my_communities():
+    user_name = session['token']
+    user_instance = User.query.get(user_name)
+    communities = Community.query.join(User,Community.users)
+    
+    return render_template('myCommunities.html',communities=communities)
+
+
+
 
 @app.route('/retreivegames',methods = ["GET"])
 def render_retrieve_games():
     games = Game.query.all()
     return render_template('retrievegames.html',games=games)
+
+
+@app.route('/retreivecommunities',methods = ["GET"])
+def render_retrieve_communities():
+    communities = Community.query.all()
+    return render_template('retrievecommunities.html',communities=communities)
+
+@app.route('/retreivepublishers',methods = ["GET"])
+def render_retrieve_publishers():
+    publishers = Publisher.query.all()
+    return render_template('retrievepublishers.html',publishers=publishers)
+
+@app.route('/retreiveservers',methods = ["GET"])
+def render_retrieve_servers():
+    servers = Server.query.all()
+    return render_template('retrieveservers.html',servers=servers)
+
+

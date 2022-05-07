@@ -1,29 +1,41 @@
-<html>
-
 <head>
-    <title>Developer Phase</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='InsertGame.css')}}">
+
+    <title>Update Publisher</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='retrieve.css')}}">
+
+
 </head>
 
-<body>
+<style>
+   
+    table, th, td {
+      border:5px solid rgb(255, 251, 251);
+    }
 
-    <head>
-        <title>HTML Tables</title>
-    </head>
-    <fieldset>
+    </style>
+    <body>
+    
+    
+    <table style="width:100%">
+      <tr  style="height:100px" >
+        <th> Data</th>
+      </tr>
+      
 
-        <body>
-            <fieldset>
-                <ul>
-                    {% for game in games %}
-                    <li>{{game.name}}</li>
-                    {% endfor %}
-                    </ul>
-                </fieldset>
-                <form action="{{url_for('home_page') }}" method="get" >
-                    <button type="submit"> Back </button>
-                </form>
-                </body>
-            </fieldset>
-    </body>
-</html>
+      {% for game in games %}
+      <tr style="height: 100px;" > <td>{{game.name}}    
+       </td>
+        </tr>
+      {% endfor %}
+
+      
+    </table>
+
+
+    
+  
+    <form action="{{url_for('home_page') }}" method="get" >
+        <button type="submit" style="position: relative;left: 600px;width: 120px; margin-top:20px;"> Back </button>
+    </form>
+
+</body>

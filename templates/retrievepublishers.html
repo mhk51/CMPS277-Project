@@ -2,8 +2,6 @@
 
     <title>Update Publisher</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='retrieve.css')}}">
-
-
 </head>
 
 <style>
@@ -22,9 +20,9 @@
       </tr>
       
 
-      {% for game in games %}
-      <tr style="height: 100px;" > <td>{{game.name}}    
-           </td>
+      {% for publisher in publishers %}
+      <tr style="height: 100px;" > <td>{{publisher.name}}    
+          </td>
         </tr>
       {% endfor %}
 
